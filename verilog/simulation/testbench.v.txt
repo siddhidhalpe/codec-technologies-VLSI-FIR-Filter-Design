@@ -1,0 +1,41 @@
+`timescale 1ns/1ps
+module tb_fir_filter;
+
+    reg clk;
+    reg rst;
+    reg signed [15:0] x_in;
+    wire signed [15:0] y_out;
+
+    // Instantiate FIR Filter
+    fir_filter uut (
+        .clk(clk),
+        .rst(rst),
+        .x_in(x_in),
+        .y_out(y_out)
+    );
+
+    // Clock generation
+    initial clk = 0;
+    always #5 clk = ~clk; // 100 MHz clock
+
+    // Input stimulus
+    integer i;
+    reg signed [15:0] input_signal [0:19]; // 20 sample test
+    initial begin
+        // Example: impulse input
+        for (i=0; i<20; i=i+1)
+            input_signal[i] = (i==0) ? 16'h7FFF : 0;
+
+        rst = 1; #10;
+        rst = 0;
+
+        for (i=0; i<20; i=i+1) begin
+            x_in = input_signal[i];
+            #10;
+        end
+
+        #50;
+        $stop;
+    end
+
+endmodule
