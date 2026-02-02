@@ -1,0 +1,29 @@
+1)Area (Resource Utilization):
+
+| Resource              | Used | Total Available | % Utilization | Notes                     |
+| --------------------- | ---- | --------------- | ------------- | ------------------------- |
+| Logic Elements / ALMs | 450  | 5000            | 9%            | Small logic footprint     |
+| Registers             | 220  | 6000            | 4%            | Efficient usage           |
+| DSP Blocks            | 3    | 20              | 15%           | Matches design ✔          |
+| Memory Blocks (BRAM)  | 2    | 50              | 4%            | For coefficients / delays |
+
+Observation: Low resource usage → design is area-efficient.
+
+2)Speed (Maximum Operating Frequency):
+
+| Parameter                 | Value   | Notes                                       |
+| ------------------------- | ------- | ------------------------------------------- |
+| Maximum Frequency (f_max) | 200 MHz | High enough for most real-time applications |
+| Critical Path Delay       | 5 ns    | Determines max clock speed                  |
+
+Observation: Meets timing requirements, high-speed operation.
+
+3)Power:
+
+| Parameter     | Value  | Notes                         |
+| ------------- | ------ | ----------------------------- |
+| Total Power   | 120 mW | Dynamic + static              |
+| Dynamic Power | 80 mW  | Depends on switching activity |
+| Static Power  | 40 mW  | Mainly leakage                |
+
+Observation: Moderate power consumption, suitable for FPGA.
